@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Echos;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class EchosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index():Response
+    public function index():View
     {
         //
-        return response('Hello world');
+        return view('echos.index');
+
     }
 
     /**
