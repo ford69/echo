@@ -6,16 +6,19 @@ use App\Models\Echos;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class EchosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index():View
+    public function index():Response
     {
-        //
-        return view('echos.index');
+        return Inertia::render('echos/index',[
+
+        ]);
 
     }
 
@@ -25,6 +28,7 @@ class EchosController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -37,7 +41,7 @@ class EchosController extends Controller
             'message' => 'required|string|max:255',
         ]);
 
-        $request->user()->chirps()->create($validated);
+        $request->user()->echos()->create($validated);
 
         return redirect(route('echos.index'));
     }
