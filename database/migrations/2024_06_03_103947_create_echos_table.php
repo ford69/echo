@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('echos', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->uuid('id')->primary();
+            $table->char('user_id', 36);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('message');
             $table->timestamps();
         });

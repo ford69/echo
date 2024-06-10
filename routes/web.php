@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('Echos', EchosController::class)
+Route::resource('echos', EchosController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 

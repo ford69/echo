@@ -14,10 +14,10 @@ class EchosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index():Response
+    public function index(Request $request)
     {
         return Inertia::render('echos/index',[
-
+            'echos' => Echos::with('user:id,name')->latest()->get(),
         ]);
 
     }
@@ -34,7 +34,7 @@ class EchosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request)
     {
         //
         $validated = $request->validate([
